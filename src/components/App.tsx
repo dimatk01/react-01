@@ -1,7 +1,9 @@
 import React from 'react';
 import Profile from './Profile/Profile';
 import './App.css';
-import {user} from "../mockData/index"
+import {user, friends, transactions} from "../mockData/index"
+import FriendList from "./FriendList/FriendList";
+import TransactionHistory from "./TransactionHistory/TransactionHistory";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
          avatar={user.avatar}
          stats={user.stats}
      />
+        <FriendList friends={friends}/>
+        <TransactionHistory transactions={transactions}/>
     </div>
   );
 }

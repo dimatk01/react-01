@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {prettyNumbers} from "../../utils/prettyNumbers";
+import React from "react";
 type ProfileProps = { 
     username: string,
     tag: string,
@@ -11,7 +12,7 @@ type ProfileProps = {
         likes: number
     }
 }
-const Profile = ({username, avatar, tag, location, stats}:ProfileProps) => {
+const Profile: React.FC<ProfileProps> = ({username, avatar, tag, location, stats}) => {
     return (
         <ProfileWrapper>
             <Description >
