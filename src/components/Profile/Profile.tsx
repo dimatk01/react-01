@@ -1,39 +1,40 @@
 import styled from "styled-components";
+import {prettyNumbers} from "../../utils/prettyNumbers";
 type ProfileProps = { 
-    username: String, 
-    tag: String,
-    location: String,
-    avatar: String,
+    username: string,
+    tag: string,
+    location: string,
+    avatar: string,
     stats: {
-        followers: Number,
-        views: Number,
-        likes: Number
+        followers: number,
+        views: number,
+        likes: number
     }
 }
-const Profile = ({}) => {
+const Profile = ({username, avatar, tag, location, stats}:ProfileProps) => {
     return (
         <ProfileWrapper>
             <Description >
                 <Avatar
-                    src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
+                    src={avatar}
                     alt="User avatar"
                 />
-                <Name>Petra Marica</Name>
-                <SubText >@pmarica</SubText>
-                <SubText >Salvador, Brasil</SubText>
+                <Name>{username}</Name>
+                <SubText >@{tag}</SubText>
+                <SubText >{location}</SubText>
             </Description>
             <Statistic>
                 <StatItem>
                     <span >Followers</span>
-                    <Quantity >1000</Quantity>
+                    <Quantity>{prettyNumbers(stats.followers)}</Quantity>
                 </StatItem>
                 <StatItem>
                     <span >Views</span>
-                    <Quantity >2000</Quantity>
+                    <Quantity>{prettyNumbers(stats.views)}</Quantity>
                 </StatItem>
                 <StatItem>
                     <span >Likes</span>
-                    <Quantity >3000</Quantity>
+                    <Quantity>{prettyNumbers(stats.likes)}</Quantity>
                 </StatItem>
             </Statistic>
         </ProfileWrapper>
@@ -94,6 +95,8 @@ const Quantity = styled.span`
    font-size: 18px;
     padding-top: 5px;
     font-weight: bold;
+    font-variant-numeric: lining-nums; /* Use lining numbers */
+    font-feature-settings: 'lnum';
 `
 
 export default Profile;
